@@ -12,6 +12,7 @@ export interface Advertiser {
   website?: string;
   workingHours?: string;
   tags?: string[];
+  isPremium?: boolean;
 }
 
 export const categoryLabels: Record<Category, string> = {
@@ -46,6 +47,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1320,
     workingHours: 'Круглосуточно',
     tags: ['Завтрак', 'Парковка', 'Wi-Fi'],
+    isPremium: true,
   },
   {
     id: 2,
@@ -58,6 +60,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1335,
     workingHours: '11:00–23:00',
     tags: ['Русская кухня', 'Банкеты', 'Живая музыка'],
+    isPremium: true,
   },
   {
     id: 3,
@@ -94,6 +97,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1315,
     workingHours: '9:00–20:00',
     tags: ['Ручная работа', 'Сувениры', 'Подарки'],
+    isPremium: true,
   },
   {
     id: 6,
@@ -106,6 +110,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1420,
     workingHours: '9:00–22:00',
     tags: ['Бассейн', 'Баня', 'Массаж'],
+    isPremium: true,
   },
   {
     id: 7,
@@ -118,6 +123,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1330,
     workingHours: '9:00–18:00',
     tags: ['Экскурсии', 'Трансфер', 'Гиды'],
+    isPremium: true,
   },
   {
     id: 8,
@@ -130,6 +136,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1360,
     workingHours: '8:00–21:00',
     tags: ['Кофе', 'Выпечка', 'Десерты'],
+    isPremium: true,
   },
   {
     id: 9,
@@ -142,6 +149,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1290,
     workingHours: 'Круглосуточно',
     tags: ['Рядом с Лаврой', 'Завтрак', 'Тихо'],
+    isPremium: true,
   },
   {
     id: 10,
@@ -154,6 +162,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1325,
     workingHours: '8:00–20:00',
     tags: ['Постная кухня', 'История', 'Паломникам'],
+    isPremium: true,
   },
   {
     id: 11,
@@ -166,6 +175,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1300,
     workingHours: '10:00–19:00',
     tags: ['Картины', 'Иконы', 'Мастер-классы'],
+    isPremium: true,
   },
   {
     id: 12,
@@ -178,6 +188,7 @@ export const advertisers: Advertiser[] = [
     lng: 38.1200,
     workingHours: '9:00–19:00',
     tags: ['Лошади', 'Природа', 'Дети'],
+    isPremium: true,
   },
 ];
 

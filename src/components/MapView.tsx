@@ -64,26 +64,81 @@ export default function MapView({ selectedCategory, onSelectAdvertiser, selected
       const color = categoryColors[adv.category] || '#C8762A';
       const emoji = categoryEmoji[adv.category];
       const isSelected = adv.id === selectedId;
+      const isPremium = adv.isPremium === true;
+
+      let iconHtml = '';
+
+      if (isPremium) {
+        // Премиум-маркер: пин с подписью, золотая рамка, звёздочка
+        const size = isSelected ? 52 : 44;
+        const shortName = adv.name.length > 18 ? adv.name.slice(0, 17) + '…' : adv.name;
+        iconHtml = `
+          <div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;">
+            <div style="
+              width:${size}px;height:${size}px;
+              background:${color};
+              border:3px solid #FFD700;
+              border-radius:50%;
+              display:flex;align-items:center;justify-content:center;
+              font-size:${isSelected ? 24 : 20}px;
+              box-shadow:0 4px 16px rgba(0,0,0,0.35), 0 0 0 2px rgba(255,215,0,0.4);
+              position:relative;
+              transition:all 0.2s;
+              ${isSelected ? 'transform:scale(1.12);' : ''}
+            ">
+              ${emoji}
+              <div style="
+                position:absolute;top:-6px;right:-6px;
+                width:16px;height:16px;
+                background:#FFD700;
+                border-radius:50%;
+                display:flex;align-items:center;justify-content:center;
+                font-size:9px;
+                box-shadow:0 1px 4px rgba(0,0,0,0.3);
+              ">⭐</div>
+            </div>
+            <div style="
+              margin-top:4px;
+              background:white;
+              color:#2E1A0E;
+              font-size:10px;
+              font-weight:700;
+              font-family:'Golos Text',sans-serif;
+              padding:2px 7px;
+              border-radius:20px;
+              box-shadow:0 2px 8px rgba(0,0,0,0.18);
+              border:1.5px solid #FFD700;
+              white-space:nowrap;
+              max-width:130px;
+              overflow:hidden;
+              text-overflow:ellipsis;
+            ">${shortName}</div>
+          </div>`;
+      } else {
+        // Обычная точка достопримечательности — скромный серый кружок
+        const size = isSelected ? 34 : 28;
+        iconHtml = `
+          <div style="
+            width:${size}px;height:${size}px;
+            background:#9CA3AF;
+            border:2.5px solid white;
+            border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:${isSelected ? 16 : 13}px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.18);
+            cursor:pointer;
+            opacity:0.85;
+          ">${emoji}</div>`;
+      }
+
+      const w = isPremium ? 150 : (isSelected ? 34 : 28);
+      const h = isPremium ? 80 : (isSelected ? 34 : 28);
 
       const icon = L.divIcon({
-        html: `<div style="
-          width:${isSelected ? 44 : 36}px;
-          height:${isSelected ? 44 : 36}px;
-          background:${color};
-          border:3px solid white;
-          border-radius:50%;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size:${isSelected ? 20 : 16}px;
-          box-shadow:0 3px 14px rgba(0,0,0,0.3);
-          cursor:pointer;
-          transition:all 0.2s;
-          ${isSelected ? 'transform:scale(1.1);' : ''}
-        ">${emoji}</div>`,
+        html: iconHtml,
         className: '',
-        iconSize: [isSelected ? 44 : 36, isSelected ? 44 : 36],
-        iconAnchor: [isSelected ? 22 : 18, isSelected ? 22 : 18],
+        iconSize: [w, h],
+        iconAnchor: isPremium ? [w / 2, isSelected ? 52 : 44] : [w / 2, h / 2],
       });
 
       const marker = L.marker([adv.lat, adv.lng], { icon })
