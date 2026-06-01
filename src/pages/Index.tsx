@@ -167,6 +167,38 @@ export default function Index() {
                 </div>
               </div>
 
+              {/* Легенда */}
+              <div className="bg-white rounded-2xl p-4 border border-amber-100 shadow-sm">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Обозначения</p>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-amber-500 border-2 border-[#FFD700] flex items-center justify-center text-sm shadow-md flex-shrink-0">
+                      🏨
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--deep-brown)]">Партнёры карты</p>
+                      <p className="text-[10px] text-gray-400">Золотая рамка + подпись</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-full bg-gray-400 border-2 border-white flex items-center justify-center text-sm shadow flex-shrink-0 opacity-80">
+                      ⛪
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--deep-brown)]">Туристические точки</p>
+                      <p className="text-[10px] text-gray-400">Серый маркер</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-5 h-5 rounded-full bg-[#4A90B8] border-2 border-white shadow flex-shrink-0 ml-1.5" style={{ boxShadow: '0 0 0 4px rgba(74,144,184,0.2)' }} />
+                    <div>
+                      <p className="text-xs font-semibold text-[var(--deep-brown)]">Вы здесь</p>
+                      <p className="text-[10px] text-gray-400">Ваше местоположение</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {selectedAdvertiser ? (
                 <div className="relative">
                   <button
