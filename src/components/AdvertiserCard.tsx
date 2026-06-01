@@ -26,7 +26,13 @@ export default function AdvertiserCard({ advertiser: a, onClick, compact, onRout
         className="place-card w-full text-left bg-white rounded-2xl p-4 border border-amber-100 shadow-sm hover:border-amber-300 transition-all"
       >
         <div className="flex items-start gap-3">
-          <span className="text-2xl">{categoryEmoji[a.category]}</span>
+          {a.image ? (
+            <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 border border-amber-100">
+              <img src={a.image} alt={a.name} className="w-full h-full object-cover object-top" />
+            </div>
+          ) : (
+            <span className="text-2xl">{categoryEmoji[a.category]}</span>
+          )}
           <div className="flex-1 min-w-0">
             <p className="font-semibold text-sm text-[var(--deep-brown)] leading-tight truncate">{a.name}</p>
             <p className="text-xs text-gray-500 mt-0.5 truncate">{a.address}</p>
@@ -41,18 +47,32 @@ export default function AdvertiserCard({ advertiser: a, onClick, compact, onRout
 
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-amber-100 overflow-hidden animate-scale-in">
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <div className="flex items-center gap-2">
-            <span className="text-3xl">{categoryEmoji[a.category]}</span>
-            <div>
-              <h3 className="font-bold text-[var(--deep-brown)] text-lg leading-tight" style={{ fontFamily: 'Cormorant, serif' }}>
-                {a.name}
-              </h3>
-              <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full font-medium ${badgeClass[a.category]}`}>
-                {categoryLabels[a.category]}
-              </span>
+      {/* Фото макета */}
+      {a.image && (
+        <div className="w-full h-44 overflow-hidden relative">
+          <img
+            src={a.image}
+            alt={a.name}
+            className="w-full h-full object-cover object-top"
+          />
+          {a.isPremium && (
+            <div className="absolute top-2 right-2 bg-[#FFD700] text-[#2E1A0E] text-[10px] font-bold px-2 py-0.5 rounded-full shadow flex items-center gap-1">
+              ⭐ Партнёр
             </div>
+          )}
+        </div>
+      )}
+
+      <div className="p-5">
+        <div className="flex items-start gap-2 mb-3">
+          {!a.image && <span className="text-3xl">{categoryEmoji[a.category]}</span>}
+          <div className="flex-1">
+            <h3 className="font-bold text-[var(--deep-brown)] text-lg leading-tight" style={{ fontFamily: 'Cormorant, serif' }}>
+              {a.name}
+            </h3>
+            <span className={`inline-block text-xs px-2.5 py-0.5 rounded-full font-medium mt-1 ${badgeClass[a.category]}`}>
+              {categoryEmoji[a.category]} {categoryLabels[a.category]}
+            </span>
           </div>
         </div>
 
@@ -73,6 +93,14 @@ export default function AdvertiserCard({ advertiser: a, onClick, compact, onRout
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <Icon name="Clock" size={14} />
               <span>{a.workingHours}</span>
+            </div>
+          )}
+          {a.website && (
+            <div className="flex items-center gap-2 text-sm text-gray-600">
+              <Icon name="Globe" size={14} />
+              <a href={a.website} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--warm-gold)] transition-colors truncate">
+                {a.website.replace('https://', '').replace('http://', '')}
+              </a>
             </div>
           )}
         </div>
