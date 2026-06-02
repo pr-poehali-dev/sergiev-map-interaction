@@ -195,6 +195,10 @@
   background: #fef9c3;
   color: #854d0e;
 }
+.badge-medical {
+  background: #cffafe;
+  color: #155e75;
+}
 
 /* Скролл */
 ::-webkit-scrollbar {

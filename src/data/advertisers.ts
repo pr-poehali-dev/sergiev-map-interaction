@@ -1,4 +1,4 @@
-export type Category = 'hotel' | 'restaurant' | 'attraction' | 'shop' | 'spa' | 'tour' | 'cafe';
+export type Category = 'hotel' | 'restaurant' | 'attraction' | 'shop' | 'spa' | 'tour' | 'cafe' | 'medical';
 
 export interface Advertiser {
   id: number;
@@ -24,6 +24,7 @@ export const categoryLabels: Record<Category, string> = {
   spa: 'СПА / Баня',
   tour: 'Туризм',
   cafe: 'Кафе',
+  medical: 'Медицина',
 };
 
 export const categoryEmoji: Record<Category, string> = {
@@ -34,6 +35,7 @@ export const categoryEmoji: Record<Category, string> = {
   spa: '♨️',
   tour: '🗺️',
   cafe: '☕',
+  medical: '⚕️',
 };
 
 export const advertisers: Advertiser[] = [
@@ -316,7 +318,7 @@ export const advertisers: Advertiser[] = [
   {
     id: 20,
     name: 'Клиника «Открытие»',
-    category: 'tour',
+    category: 'medical',
     address: 'пр. Красной Армии, 74',
     phone: '8 (495) 135-16-86',
     description: 'Клиника микрохирургии глаза. Диагностика, лечение, хирургия. Все виды офтальмологических услуг с 4 лет.',

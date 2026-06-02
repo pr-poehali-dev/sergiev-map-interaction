@@ -16,6 +16,7 @@ const categories: { key: Category | 'all'; label: string }[] = [
   { key: 'shop', label: categoryLabels.shop },
   { key: 'spa', label: categoryLabels.spa },
   { key: 'tour', label: categoryLabels.tour },
+  { key: 'medical', label: categoryLabels.medical },
 ];
 
 export default function Index() {

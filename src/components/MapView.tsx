@@ -18,6 +18,7 @@ const categoryColors: Record<string, string> = {
   spa: '#EC4899',
   tour: '#3B82F6',
   cafe: '#D97706',
+  medical: '#06B6D4',
 };
 
 export default function MapView({ selectedCategory, onSelectAdvertiser, selectedId, userLocation }: MapViewProps) {
