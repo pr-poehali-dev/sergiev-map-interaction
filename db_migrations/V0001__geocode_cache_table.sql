@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS geocode_cache (
+  id INTEGER PRIMARY KEY,
+  query TEXT NOT NULL,
+  lat DOUBLE PRECISION,
+  lon DOUBLE PRECISION,
+  display TEXT,
+  updated_at TIMESTAMP DEFAULT NOW()
+);
